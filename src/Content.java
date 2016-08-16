@@ -38,7 +38,21 @@ public class Content {
 	}
 	
 	private void print_descs() throws IOException{
-		PrintWriter pw = new PrintWriter("./temp/el/el_" + this.title + ".tmp", "UTF-8");
+		String f_name = "./temp/el/el_" + this.title;
+		File f = new File(f_name + ".tmp");
+		if(f.isFile()){
+			int i = 0;
+			while(true){
+				String newf_name = f_name + "(" + i + ")";
+				f = new File(newf_name + ".tmp");
+				if(f.isFile()) i++;
+				else{
+					f_name = newf_name;
+					break;				
+				}
+			}
+		}
+		PrintWriter pw = new PrintWriter(f_name + ".tmp");
 		pw.println(this.title);
 		pw.println();
 		for(int i = 0 ; i < this.desc.size() ; i++)
@@ -100,7 +114,7 @@ public class Content {
 			}
 				
 		}
-		print_descs();
+		this.print_descs();
 		return true;
 	}
 }

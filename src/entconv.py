@@ -9,12 +9,14 @@ sys.setdefaultencoding('utf-8')
 url = "http://143.248.135.150:2221/entity_linking"
 
 for root, dirs, files in os.walk('../temp/el/'):
+	n_files = len(files)
+	d_files = 0
 	for fname in files:
+		d_files += 1
 		nl = []
 		payload = "{\"text\":\""
 		full_fname = os.path.join(root, fname)
 		fin = open(full_fname,'r')
-		print full_fname
 		title = unicode(fin.readline())
 
 		while True:
@@ -43,7 +45,7 @@ for root, dirs, files in os.walk('../temp/el/'):
 			href = unicode(datum["uri"].split('resource/')[1])
 			result = result[:start] + '<a href="' + href + '">' + result[start:end] + '</a>' + result[end:]
 			result = result.encode('utf-8')
-		print '../temp/l2k/l2k_' + fname
+		print "%3.0f" % (float(d_files) / float(n_files) * 100) + '%\t' + '../temp/l2k/l2k_' + fname
 		f = open(unicode('../temp/l2k/l2k_' + fname), 'w')
 		f.write(title)
 		f.write("\n")

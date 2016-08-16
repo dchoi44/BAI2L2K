@@ -5,8 +5,7 @@ public class BAI2L2K {
 		dealingArgs(args);
 		
 		Content broch = new Content(ipaddr);
-		while(broch.parser()){
-		}
+		while(broch.parser());
 	}
 	
 	private static void dealingArgs(String[] args){
