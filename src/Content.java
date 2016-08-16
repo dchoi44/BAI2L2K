@@ -56,6 +56,7 @@ public class Content {
 			}
 			else{
 				this.br = new BufferedReader(new FileReader(this.ipaddr + "/" + this.files[this.f_ind].getName()));
+				this.desc = new ArrayList<String>();
 				this.f_ind++;
 				return true;
 			}

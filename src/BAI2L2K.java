@@ -13,7 +13,6 @@ public class BAI2L2K {
 		for(int i = 0; i < args.length; i++){
 			if(args[i].equals("-ipaddr")){
 				if(i+1 >= args.length){
-					System.out.println("invalid request. check your parameters again. -help would be helpful");
 					System.exit(0);
 				}
 				ipaddr = args[i+1];
